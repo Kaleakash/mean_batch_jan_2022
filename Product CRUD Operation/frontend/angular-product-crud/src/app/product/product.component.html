@@ -12,4 +12,12 @@
         <input type="submit" value="store product"/>
         <input type="reset" value="reset"/>
     </form>
+    <span style="color:red">{{storeResult}}</span>
+    <hr/>
+    <div *ngFor="let product of products" style="display: inline-block;">
+        <img src={{product.url}}/>
+        Id :<b>{{product.pid}}</b>
+        Name :<b>{{product.pname}}</b>
+        Price :<b>{{product.price}}</b>
+    </div>
 </div>
