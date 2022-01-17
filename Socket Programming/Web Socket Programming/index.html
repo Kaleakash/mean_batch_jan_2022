@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/JavaScript">
+            // reference created...
+            let ws = new WebSocket("ws://localhost:9090");
+            // This code is use to send the data 
+            ws.onopen=()=> {
+                // This code is use to send the data to server.
+                ws.send("Hello Server, I a WS Client Application")
+                // arrow style function 
+                sendInfo = ()=> {
+                    let msg = document.getElementById("msg").value;
+                    // send dynamic message to server 
+                    ws.send(msg);
+                    // reset the text field
+                    document.getElementById("msg").value="";
+                }
+            }
+            // This code is use to receive the data
+            ws.onmessage = (obj)=> {
+                    // This code display the reference on browser console
+                    //console.log(obj); it display the reference 
+                   // console.log(obj.data)
+            document.getElementById("output").innerHTML=obj.data;
+            }
+    </script>
+</head>
+<body>
+    <h2>Welcome to Web Socket Application</h2>
+    <div id="output">
+
+    </div>
+    <br/>
+    Message 
+    <input type="text" id="msg"/><br/>
+    <input type="button" value="send" onclick="sendInfo()"/>
+</body>
+</html>
