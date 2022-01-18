@@ -16,6 +16,12 @@ let io = require("socket.io")(http);
 app.get("/",(req,res)=> {
     res.sendFile(__dirname+"\\index.html");
 })
+
+//to open main.html page
+app.get("/open",(req,res)=> {
+    res.sendFile(__dirname+"\\main.html");
+})
+
 // This code will execute if any client send the request using library 
 io.on("connection",(socket)=> {
     console.log("Client connected this application");
